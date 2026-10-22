@@ -1,6 +1,6 @@
-# Boda Betzabe & Jhon — 21 de noviembre de 2026
+# Boda Ariel & Eva — 19 de diciembre de 2026
 
-Invitación digital de la boda de **Betzabe Mamani Fuentes** y **Jhon Alex Yelma Gutiérrez**.
+Invitación digital de la boda de **Ariel** y **Eva**.
 Hecha con Astro, Tailwind y GSAP.
 
 ## Comandos
