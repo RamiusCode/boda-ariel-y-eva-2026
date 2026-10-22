@@ -1,0 +1,134 @@
+---
+// DireccionSalon.astro (o el nombre que uses)
+---
+<section class="pt-16 md:pt-24 pb-2 px-4 relative">
+  <div class="max-w-xl mx-auto text-center relative">
+    
+    <!-- TÍTULO DIRECCIÓN -->
+    <div class="mb-4" id="titulo-salon">
+      <h2
+        class="font-charm text-2xl md:text-3xl text-[#C9A961] font-bold tracking-wide"
+      >
+        Ceremonia Religiosa
+      </h2>
+    </div>
+
+    <!-- 🏛️ ICONO DIRECCIÓN -->
+    <div class="relative mb-4" id="icono-salon">
+
+      <!-- ICONO CENTRAL -->
+      <div class="flex justify-center">
+        <div
+          role="img"
+          aria-label="Iglesia"
+          class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 icono-iglesia"
+        ></div>
+      </div>
+
+    </div>
+
+    <!-- INFORMACIÓN DE UBICACIÓN -->
+    <div class="mb-2" id="info-salon">
+      <p
+        class="font-charm text-xl md:text-lg text-[#626a54] leading-relaxed mb-2"
+      >
+        <b class="text-[#C9A961]">Iglesia Católica San Francisco</b><br />
+        Calle Ravelo esquina Aniceto Arce<br />
+        <span class="text-[#C9A961] font-bold">14:00 Hrs.</span>
+      </p>
+    </div>
+    
+    <!-- BOTÓN VER UBICACIÓN -->
+    <div class="flex justify-center" id="boton-salon">
+      
+    <a
+        href="https://maps.app.goo.gl/jYKiyJkKkjcx2YK18"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <img
+        src="/imagenes/VerUbicacion.webp"
+        alt="Ver ubicación en el mapa"
+        class="w-56 md:w-56 lg:w-64 h-auto object-contain cursor-pointer transition-transform duration-300 hover:scale-105"
+        />
+    </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  if (typeof window !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      // Estado inicial
+      gsap.set("#icono-salon", { opacity: 0, scale: 0.8 });
+      gsap.set("#titulo-salon", { opacity: 0, scale: 0.9 });
+      gsap.set("#info-salon", { opacity: 0, scale: 0.9 });
+      gsap.set("#boton-salon", { opacity: 0, scale: 0.9 });
+
+      // ✨ ANIMACIÓN SIMULTÁNEA - TODO AL MISMO TIEMPO
+      ScrollTrigger.create({
+        trigger: "#icono-salon",
+        start: "top 85%",
+        end: "top 20%",
+        onEnter: () => {
+          const tl = gsap.timeline();
+          
+          // TODO aparece al mismo tiempo
+          tl.to("#icono-salon, #titulo-salon, #info-salon, #boton-salon", {
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+          })
+          // Animaciones individuales (simultáneas)
+          .to("#icono-salon", {
+            scale: 1,
+            duration: 1,
+            ease: "back.out(1.5)",
+          }, "<")
+          .to("#titulo-salon, #info-salon, #boton-salon", {
+            scale: 1,
+            duration: 1,
+            ease: "back.out(1.2)",
+          }, "<");
+        },
+        onLeaveBack: () => {
+          // Salida simultánea
+          const tl = gsap.timeline();
+          
+          tl.to("#icono-salon, #titulo-salon, #info-salon, #boton-salon", {
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.in",
+          })
+          .to("#icono-salon", {
+            scale: 0.8,
+            duration: 0.5,
+            ease: "power2.in",
+          }, "<")
+          .to("#titulo-salon, #info-salon, #boton-salon", {
+            scale: 0.9,
+            duration: 0.5,
+            ease: "power2.in",
+          }, "<");
+        },
+      });
+
+      console.log("🎉 Sección de Salón inicializada");
+    });
+  }
+</script>
+
+<style>
+  /* Icono de iglesia pintado en dorado (misma técnica que en Dirección) */
+  .icono-iglesia {
+    background-color: #C9A961;
+    -webkit-mask: url("/imagenes/iglesia.png") center / contain no-repeat;
+    mask: url("/imagenes/iglesia.png") center / contain no-repeat;
+  }
+</style>
