@@ -21,18 +21,17 @@ const { title } = Astro.props;
     <meta property="og:type" content="website" />
     <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
     <meta property="og:title" content={title} />
-    <meta property="og:image" content={new URL('/imagenes/miniatura-whatsapp-v2.jpg', Astro.site)} />
+    <meta property="og:image" content={new URL('/imagenes/miniatura-whatsapp-v3.jpg', Astro.site)} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta name="twitter:card" content="summary_large_image" />
-     <!-- Google Fonts -->
+    <!-- Amoresa (nombres y títulos) se sirve desde /fonts/ del propio sitio -->
+    <link rel="preload" href="/fonts/amoresa.otf" as="font" type="font/otf" crossorigin>
+     <!-- Google Fonts: un solo pedido para el resto de las letras -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Crimson+Text:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Charm:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
       /* 🎨 Forzar modo claro en todo el documento, aunque el navegador esté en modo oscuro */

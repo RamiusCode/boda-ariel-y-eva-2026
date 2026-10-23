@@ -1,9 +1,17 @@
 @import "tailwindcss";
 
 
+@font-face {
+  font-family: 'Amoresa';
+  src: url('/fonts/amoresa.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Para el nombre */
-.font-great-vibes {
-  font-family: 'Great Vibes', cursive !important;
+.font-amoresa {
+  font-family: 'Amoresa', cursive !important;
 }
 
 /* Para mis XV años */
